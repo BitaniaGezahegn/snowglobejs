@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SnowGlobe.js - Manual Tests</title>
+    <style>
+        .test-case { 
+            margin: 2rem 0; 
+            padding: 1rem; 
+            border: 1px solid #ccc; 
+            border-radius: 4px;
+        }
+        iframe { width: 100%; height: 300px; border: 1px solid #000; }
+    </style>
+</head>
+<body>
+    <h1>SnowGlobe.js Manual Tests</h1>
+    
+    <div class="test-case">
+        <h2>1. Basic Initialization</h2>
+        <iframe srcdoc='
+            <html><body style="height:100%;margin:0;">
+                <script src="../dist/snowglobe.min.js"></script>
+                <script>addSnow(document.body);</script>
+            </body></html>
+        '></iframe>
+    </div>
+    
+    <div class="test-case">
+        <h2>2. Preset Switching</h2>
+        <iframe srcdoc='
+            <html><body style="height:100%;margin:0;">
+                <button onclick="snow.usePreset(`blizzard`)">Blizzard</button>
+                <button onclick="snow.usePreset(`winter`)">Winter</button>
+                <script src="../dist/snowglobe.min.js"></script>
+                <script>const snow = addSnow(document.body);</script>
+            </body></html>
+        '></iframe>
+    </div>
+    
+    <!-- Add more test cases for all major features -->
+    
+    <div class="test-case">
+        <h2>9. Memory Cleanup</h2>
+        <iframe srcdoc='
+            <html><body style="height:100%;margin:0;">
+                <button id="toggle">Toggle Snow</button>
+                <script src="../dist/snowglobe.min.js"></script>
+                <script>
+                    let snow;
+                    document.getElementById("toggle").onclick = function() {
+                        if (snow) {
+                            snow.destroy();
+                            snow = null;
+                            this.textContent = "Start Snow";
+                        } else {
+                            snow = addSnow(document.body);
+                            this.textContent = "Stop Snow";
+                        }
+                    };
+                </script>
+            </body></html>
+        '></iframe>
+    </div>
+</body>
+</html>

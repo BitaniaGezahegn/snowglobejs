@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SnowGlobe.js - Presets Showcase</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+        .preset-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem; 
+            padding: 1rem;
+        }
+        .preset-card {
+            height: 200px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 1rem;
+            background: #222;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 { text-align: center; padding: 1rem; }
+    </style>
+</head>
+<body>
+    <h1>SnowGlobe.js Presets</h1>
+    <div class="preset-grid">
+        <div class="preset-card" data-preset="winter">
+            <h3>Winter</h3>
+            <p>Gentle classic snowfall</p>
+        </div>
+        <div class="preset-card" data-preset="blizzard">
+            <h3>Blizzard</h3>
+            <p>Intense snowstorm</p>
+        </div>
+        <!-- Add cards for all 8 presets -->
+    </div>
+
+    <script src="../dist/snowglobe.min.js"></script>
+    <script>
+        document.querySelectorAll('.preset-card').forEach(card => {
+            const preset = card.dataset.preset;
+            const snow = addSnow(card, preset);
+            
+            card.addEventListener('mouseenter', () => {
+                snow.updateOptions({ interaction: 30 });
+            });
+        });
+    </script>
+</body>
+</html>

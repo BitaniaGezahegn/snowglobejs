@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SnowGlobe.js - Advanced Controls</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+        .controls { 
+            padding: 1rem; 
+            background: #f0f0f0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .snow-container {
+            height: 70vh;
+            background: #121212;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button id="pause-btn">Pause</button>
+        <input type="range" id="speed-control" min="1" max="20" value="5" label="Speed">
+        <input type="range" id="count-control" min="10" max="300" value="50" label="Count">
+        <select id="preset-selector">
+            <option value="">Custom</option>
+            <option value="winter">Winter</option>
+            <!-- Add all presets -->
+        </select>
+    </div>
+    
+    <div class="snow-container" id="snow-demo"></div>
+
+    <script src="../dist/snowglobe.min.js"></script>
+    <script>
+        const snow = addSnow(document.getElementById('snow-demo'));
+        
+        // Control bindings
+        document.getElementById('pause-btn').addEventListener('click', function() {
+            if (snow.isPaused) {
+                snow.resume();
+                this.textContent = 'Pause';
+            } else {
+                snow.pause();
+                this.textContent = 'Resume';
+            }
+        });
+        
+        document.getElementById('speed-control').addEventListener('input', (e) => {
+            snow.updateOptions({ speed: parseInt(e.target.value) });
+        });
+        
+        document.getElementById('count-control').addEventListener('input', (e) => {
+            const target = parseInt(e.target.value);
+            const current = snow.getSettings().count;
+            
+            if (target > current) {
+                snow.addFlakes(target - current);
+            } else {
+                snow.removeFlakes(current - target);
+            }
+        });
+        
+        document.getElementById('preset-selector').addEventListener('change', (e) => {
+            if (e.target.value) {
+                snow.usePreset(e.target.value);
+            }
+        });
+    </script>
+</body>
+</html>
