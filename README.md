@@ -40,4 +40,4 @@ addSnow(containerElement, {
 });
 ```
 
-[View full documentation →](docs/API.md)
+[View full documentation →](https://github.com/yourusername/snowglobejs/blob/main/docs/API.md)

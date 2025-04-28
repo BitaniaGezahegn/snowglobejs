@@ -4,30 +4,32 @@
     "description": "Beautiful interactive snow effects with multiple presets and full customization",
     "main": "dist/snowglobe.min.js",
     "module": "dist/snowglobe.esm.js",
-    "files": ["dist"],
+    "files": [
+        "dist"
+    ],
     "scripts": {
-      "build": "rollup -c",
-      "prepublishOnly": "npm run build"
+        "build": "rollup -c",
+        "prepublishOnly": "npm run build"
     },
     "keywords": [
-      "snow",
-      "winter",
-      "animation",
-      "interactive",
-      "visual-effects"
+        "snow",
+        "winter",
+        "animation",
+        "interactive",
+        "visual-effects"
     ],
     "author": "Bitania Gezahegn",
     "license": "MIT",
     "homepage": "https://github.com/bitaniagezahegn/snowglobejs",
     "bugs": {
-      "url": "https://github.com/bitaniagezahegn/snowglobejs/issues"
+        "url": "https://github.com/bitaniagezahegn/snowglobejs/issues"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/bitaniagezahegn/snowglobejs.git"
+        "type": "git",
+        "url": "git+https://github.com/bitaniagezahegn/snowglobejs.git"
     },
     "devDependencies": {
-      "rollup": "^2.60.0",
-      "rollup-plugin-terser": "^7.0.2"
+        "rollup": "^2.79.2",
+        "rollup-plugin-terser": "^7.0.2"
     }
-  }
+}
